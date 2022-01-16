@@ -1,19 +1,18 @@
 import './App.css';
 import React , { useState } from 'react'
 import SearchBar from "./components/SearchBar"
+import ImageList from './components/ImageList';
 
 function App() {
   const [pics, setPics] = useState([])
   const [term, setTerm] = useState("")
 
-  const displayPics = () => {
-    return pics.map(pic => <img key={pic.id} src={pic.urls.regular} />)
-  }
+  
 
   return (
     <div className="ui container" style={{marginTop : '10px'}}>
       <SearchBar term={term} setTerm={setTerm} setPics={setPics}/>
-      {displayPics()}
+      <ImageList pics={pics}/>
     </div>
   );
 }
