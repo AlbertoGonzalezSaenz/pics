@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import unsplash from '../api/unsplash'
 
 
 function SearchBar({term, setTerm, setPics}) {
@@ -11,13 +11,8 @@ function SearchBar({term, setTerm, setPics}) {
 
     const onFormSubmit = async (e) => {
         e.preventDefault()
-        const res = await axios.get('https://api.unsplash.com/search/photos', {
-            params: {
-                query: term
-            },
-            headers : {
-                Authorization : 'Client-ID NGVbq1wpFNyCDzw9v8QPTpb3QG8kWfKXSMtE9N55db0'
-            }
+        const res = await unsplash.get('/search/photos', {
+            params: {query: term}
         })
         console.log(res.data.results)
         setPics(res.data.results)

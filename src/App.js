@@ -7,7 +7,7 @@ function App() {
   const [term, setTerm] = useState("")
 
   const displayPics = () => {
-    return pics.map(pic => <img src={pic.urls.regular} />)
+    return pics.map(pic => <img key={pic.id} src={pic.urls.regular} />)
   }
 
   return (
